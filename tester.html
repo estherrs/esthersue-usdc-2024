@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>USDC Javascript Tester</title>
+    <style>
+      button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+      }
+    </style>
+    <script src="book_search.js"></script>
+    <script>
+      function submitTest() {
+        var searchTerm = document.getElementById("searchTerm").value;
+        try {
+          var books = JSON.parse(document.getElementById("books").value);
+          console.log(books);
+          var result = findSearchTermInBooks(searchTerm, books);
+          console.log(result);
+          document.getElementById("results").innerText =
+            "Result: " + JSON.stringify(result);
+        } catch (error) {
+          document.getElementById("results").innerText = "Bad input: " + error;
+        }
+      }
+      function handleTextInput() {
+        var textarea = document.getElementById('books');
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      }
+    </script>
+  </head>
+  <body>
+    <h1>USDC Code Tester</h1>
+    <p>This HTML file should help you test your JavaScript.</p>
+    <p>
+      Feel free to test your code as you wish. We will be evaluating your
+      submissions in a testing script in our browsers that is similar to this.
+    </p>
+    <p>We imagine you would use this file in the following way:</p>
+    <ol>
+      <li>Open this file in a browser.</li>
+      <li>
+        Open the web developer console.
+        <ul>
+          <li>
+            If you have not done any work on the code yet, you
+            <em>should</em> see two failing tests.
+          </li>
+        </ul>
+      </li>
+      <li>Work your solution using a text or code editor of your choice.</li>
+      <li>
+        To iteratively test your work: 1) save your code, 2) flip back to this
+        window, and 3) reload the page.
+      </li>
+    </ol>
+
+    <!-- <form>
+      <label for=""
+    </form> -->
+
+    <form onsubmit="event.preventDefault(); submitTest();">
+      <label for="searchTerm">Search Term:</label>
+      <input type="text" id="searchTerm" required />
+      <label for="books">List of Books:</label>
+      <textarea id="books" required oninput="handleTextInput()"></textarea>
+      <button type="submit">Submit Test</button>
+    </form>
+    <div id="results"></div>
+  </body>
+</html>
